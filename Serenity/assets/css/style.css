@@ -694,6 +694,79 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Bestsellers
+--------------------------------------------------------------*/
+.bestsellers .icon-box {
+  padding: 30px;
+  position: relative;
+  /* overflow: hidden; */
+  border-radius: 10px;
+  margin: 0 10px 40px 10px;
+  background: #fff;
+  box-shadow: 0 2px 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+}
+.bestsellers .icon-box:hover {
+  transform: translateY(-5px);
+}
+.bestsellers .icon {
+  position: absolute;
+  left: -20px;
+  top: calc(50% - 30px);
+}
+.bestsellers .icon i {
+  font-size: 64px;
+  line-height: 1;
+  transition: 0.5s;
+}
+.bestsellers .title {
+  margin-left: 40px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.bestsellers .title a {
+  color: #111;
+}
+.bestsellers .icon-box:hover .title a {
+  color: #94c045;
+}
+.bestsellers .description {
+  font-size: 14px;
+  margin-left: 40px;
+  line-height: 24px;
+  margin-bottom: 0;
+}
+
+.bestsellers .bestsellers-container-btn {
+    position: relative;
+    /* bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bestsellers .bestsellers-container-btn .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #94c045;
+  text-transform: uppercase;
+  color: #94c045;
+}
+
+/*--------------------------------------------------------------
 # Work Process
 --------------------------------------------------------------*/
 .work-process .content + .content {
