@@ -766,6 +766,12 @@ section {
   color: #94c045;
 }
 
+.bestsellers .bestsellers-container-btn .btn-get-started:hover {
+  background: #aacd6b;
+  border-color: #aacd6b;
+  color: #fff;
+}
+
 /*--------------------------------------------------------------
 # Work Process
 --------------------------------------------------------------*/
@@ -1416,7 +1422,7 @@ section {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 .blog .entry .entry-img {
-  max-height: 300px;
+  max-height: 460px;
   margin: -30px -30px 20px -30px;
   overflow: hidden;
 }
