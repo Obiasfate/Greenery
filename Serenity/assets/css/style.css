@@ -1416,7 +1416,7 @@ section {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 .blog .entry .entry-img {
-  max-height: 440px;
+  max-height: 300px;
   margin: -30px -30px 20px -30px;
   overflow: hidden;
 }
