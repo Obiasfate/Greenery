@@ -1968,3 +1968,22 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+/*--------------------------------------------------------------
+# Admin-Login
+--------------------------------------------------------------*/
+
+.admin-login .admin-login-container .card-img-top {
+  color: green;
+}
+.admin-login .admin-login-container .btn-primary{
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: 0;
+  background-color: #a7da4a;
+}
+
+
+.admin-login .admin-login-container .card-img-top{
+
+}
