@@ -115,7 +115,7 @@
                         <input type="text" placeholder="Enter product name..." name="product_name" class="box">
                         <input type="number" placeholder="Enter product price..." name="product_price" class="box">
                         <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
-                        <input type="submit" class="btn" name="add_product" value="Add a Product">
+                        <input type="submit" class="btn-add-product" name="add_product" value="Add a Product">
                     </form>
 
                 </div>
