@@ -155,8 +155,21 @@
                                     <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
                                     <td><?php echo $row['product_name']; ?></td>
                                     <td><?php echo $row['product_price']; ?></td>
-                                    <td>
-                                        <a href="admin_update.php?edit=<?php echo $row['product_id']; ?>" class="btn"> i.fas.fa-edit </a>
+                                    <td class="d-flex flex-row">
+                                        <a href="updatecontact.php?edit=<?php echo $row['product_id']; ?>">
+                                            <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <span class="material-icons" aria-hidden="true">
+                                                    edit
+                                                </span>
+                                            </button>
+                                        </a>
+                                        <a href="functions.php?delete=<?php echo $row['product_id']; ?>">
+                                            <button type="button" class="btn btn-danger me-3 ms-2" data-toggle=" tooltip" data-placement="top" title="Delete">
+                                                <span class="material-icons" aria-hidden="true">
+                                                    delete
+                                                </span>
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php
