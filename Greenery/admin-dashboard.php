@@ -29,42 +29,77 @@
 
 </head>
 <body>
-  
-    <div class="container">
-    <a class="align-items-end" href="admin-login.php"> Logout </a> //AYAW GUMANA NG ALIGN ITEMS RIGHT AMP 
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">Simple header</span>
-      </a>
-      
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="admin-dashboard.php" class="nav-link active" aria-current="page">Admin</a></li>
-        <li class="nav-item"><a href="contact-dashboard.php" class="nav-link">Contact</a></li>
-      </ul>
-    </header>
-     </div>
-
-    <div class="admin-display">
-
-      <table class="admin-display-table">
-
-        <thead>
-          <tr>
-            <td>Admin Id</td>
-            <td>Admin Username</td>
-            <td>Admin Password</td>
-            <td>Action</td>
-          </tr>
-        </thead>
-
-        
-
-      </table>
+<header class="d-flex flex-wrap justify-content-center py-4 mb-4 border-bottom">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="admin-dashboard.php"><img src="assets/img/greenery_logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">Greenery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="admin-dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact-dashboard.php">Contact</a>
+            </li>
+          </ul>
+          <li class="nav-item d-flex pe-3">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
     
-    </div>
+    <div class="container-fluid px-4 py-2">
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+      <h1 class="mt-4 py-3">Dashboard</h1>
 
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Contact Database
+        </div>
+        <div class="card-body">
+          <?php
+          $sql = "SELECT * FROM `main`";
+          $result = $conn->query($sql);
+          ?>
+          <table id="datatablesSimple">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>School Name</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              while ($row = $result->fetch_assoc()) {
+              ?>
+                <tr>
+                  <td><?php echo $row['name']; ?></td>
+                  <td><?php echo $row['email']; ?></td>
+                  <td><?php echo $row['contactnumber']; ?></td>
+                  <td><?php echo $row['schoolname']; ?></td>
+                  <td><?php echo $row['message']; ?></td>
+                </tr>
+              <?php
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
 
 
 
