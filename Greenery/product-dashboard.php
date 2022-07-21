@@ -13,7 +13,7 @@
         if (empty($product_name) || empty($product_price) || empty($product_image)) {
             $message[] = 'Please Fill Out All Field';
         } else {
-            $insert = "INSERT INTO `product_info`(`product_name`, `product price`, `product_image`) VALUES('$product_name', '$product_price', '$product_image')";
+            $insert = "INSERT INTO `product_info`(`product_name`, `product_price`, `product_image`) VALUES('$product_name', '$product_price', '$product_image')";
             $upload = mysqli_query($conn, $insert);
             if ($upload) {
                 move_uploaded_file($product_image_tmp_name, $product_image_folder);
@@ -55,6 +55,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/product-dashboard.css" rel="stylesheet">
 
 
 </head>
@@ -73,7 +74,7 @@
                             <a class="nav-link" href="admin-dashboard.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="contact-dashboard.php">Products</a>
+                            <a class="nav-link active" aria-current="page" href="product-dashboard.php">Products</a>
                         </li>
                     </ul>
                     <li class="nav-item d-flex pe-3">
@@ -116,47 +117,51 @@
 
                 </div>
 
-
-
             </div>
+
+
+<!-- PRODUCT DATABASE TABLE -->
 
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Contact Database
+                    Product Database
                 </div>
+
 
                 <div class="card-body">
                     <?php
-                    $sql = "SELECT * FROM `main`";
+                    include_once 'includes/dbh.inc.php';
+                    $sql = "SELECT * FROM `product_info`";
                     $result = $conn->query($sql);
                     ?>
-                    <table id="datatablesSimple">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact Number</th>
-                                <th>School Name</th>
-                                <th>Message</th>
-                            </tr>
+                    <table class="table" id="datatablesSimple">
+                        <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Product image</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Price</th>
+                            <th scope="col">Action</th>
+                        </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-group-divider">
                             <?php
                             while ($row = $result->fetch_assoc()) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row['email']; ?></td>
-                                    <td><?php echo $row['contactnumber']; ?></td>
-                                    <td><?php echo $row['schoolname']; ?></td>
-                                    <td><?php echo $row['message']; ?></td>
+                                    <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
+                                    <td><?php echo $row['product_name']; ?></td>
+                                    <td><?php echo $row['product_price']; ?></td>
+                                    <td>
+                                        <a href="admin_update.php?edit=<?php echo $row['product_id']; ?>" class="btn"> i.fas.fa-edit </a>
+                                    </td>
                                 </tr>
                             <?php
                             }
                             ?>
                         </tbody>
                     </table>
+          
                 </div>
             </div>
         </div>

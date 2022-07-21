@@ -61,7 +61,7 @@
               <a class="nav-link active" aria-current="page" href="admin-dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-dashboard.php">Contact</a>
+              <a class="nav-link" href="product-dashboard.php">Products</a>
             </li>
           </ul>
           <li class="nav-item d-flex pe-3">
@@ -84,6 +84,7 @@
           <i class="fas fa-table me-1"></i>
           Contact Database
         </div>
+        
         <div class="card-body">
           <?php
           include_once 'includes/dbh.inc.php';
