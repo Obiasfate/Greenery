@@ -10,7 +10,7 @@
         $project = $_POST['project'];
         $message = $_POST['message'];
 
-        $sql = ("INSERT INTO 'contact_info'('contact_name', 'contact_email', 'contact_num', 'contact_company', 'contact_project', 'Message') VALUES ('$name',' $email','$phoneNumber','$companyName','$project','$message') ") or die($mysqli->error);
+        $sql = ("INSERT INTO `contact_info`(`contact_name`, `contact_email`, `contact_num`, `contact_company`, `contact_project`, `Message`) VALUES ('$name',' $email','$phoneNumber','$companyName','$project','$message') ") or die($mysqli->error);
 
         if (mysqli_query($conn, $sql))
         {
@@ -21,7 +21,7 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        header('Location:homepage.html');
+        header('Location: contact.php');
     }    
 ?>
 
@@ -169,7 +169,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
