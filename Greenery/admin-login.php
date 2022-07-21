@@ -93,7 +93,7 @@
         if($result->num_rows > 0)
         {
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['admin_username'] = $row['admin_username'];
             header("Location: admin-dashboard.php");
         }
         else

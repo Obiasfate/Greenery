@@ -1,12 +1,12 @@
 <?php
-    // session_start();
+    session_start();
 
-    // include_once 'includes/dbh.inc.php';
+    include_once 'includes/dbh.inc.php';
     // require_once 'functions.php';
 
-    // if(!isset($_SESSION['username'])){
-    //    header("Location:admin-dashboard.php");
-    // }
+    if(!isset($_SESSION['admin_username'])){
+      header("Location:admin-login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,15 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- Additional Design for Tables -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <script>
+    $(document).ready(function () {
+    $('#datatablesSimple').DataTable();
+    });
+  </script>
 
 </head>
 <body>
@@ -81,22 +90,24 @@
           $sql = "SELECT * FROM `contact_info`";
           $result = $conn->query($sql);
           ?>
-          <table id="datatablesSimple">
-            <thead>
+          <table class="table" id="datatablesSimple">
+            <thead class="table-dark">
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Contact Number</th>
-                <th>Company Name</th>
-                <th>Project</th>
-                <th>Message</th>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col" >Company Name</th>
+                <th scope="col">Project</th>
+                <th scope="col">Message</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
               <?php
               while ($row = $result->fetch_assoc()) {
               ?>
                 <tr>
+                  <td><?php echo $row['contact_date']; ?></td>
                   <td><?php echo $row['contact_name']; ?></td>
                   <td><?php echo $row['contact_email']; ?></td>
                   <td><?php echo $row['contact_num']; ?></td>
@@ -109,7 +120,9 @@
               ?>
             </tbody>
           </table>
+          
         </div>
+        
       </div>
     </div>
   </main>
