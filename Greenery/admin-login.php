@@ -87,7 +87,7 @@
         $username = $_POST['adminuser'];
         $password = $_POST['adminpass'];
 
-        $sql= " SELECT * FROM users_admin WHERE admin_username = '$username' AND admin_password = '$password' ";
+        $sql= " SELECT * FROM admin_info WHERE admin_username = '$username' AND admin_password = '$password' ";
         $result = mysqli_query($conn, $sql);
 
         if($result->num_rows > 0)

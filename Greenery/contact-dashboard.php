@@ -40,22 +40,26 @@
       
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="admin-dashboard.php" class="nav-link active" aria-current="page">Admin</a></li>
-        <li class="nav-item"><a href="contact-dasboard.php" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="admin-dashboard.php" class="nav-link">Admin</a></li>
+        <li class="nav-item"><a href="contact-dasboard.php" class="nav-link active" aria-current="page">Contact</a></li>
       </ul>
     </header>
      </div>
 
-    <div class="admin-display">
+    <div class="contact-display">
 
-      <table class="admin-display-table">
+      <table class="contact-display-table">
 
         <thead>
           <tr>
-            <td>Admin Id</td>
-            <td>Admin Username</td>
-            <td>Admin Password</td>
-            <td>Action</td>
+            <td>Contact Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Subject</td>
+            <td>Phone Number</td>
+            <td>Company</td>
+            <td>Type of Project</td>
+            <td>Message</td>
           </tr>
         </thead>
 
