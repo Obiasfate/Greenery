@@ -5,38 +5,39 @@
 
     $nameTemp = '';
     $emailTemp = '';
-    $contactNumberTemp = '';
-    $schoolNameTemp = '';
+    $phoneNumberTemp = '';
+    $companyNameTemp = '';
+    $projectTemp = '';
     $messageTemp = '';
 
     if(isset($_POST['add']))
     {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $contactNumber = $_POST['contactnumber'];
-        $schoolName = $_POST['schoolname'];
+        $phoneNumber = $_POST['phone'];
+        $companyName = $_POST['company'];
+        $project = $_POST['project'];
         $message = $_POST['message'];
 
-        $sql = ("INSERT INTO `main`(`name`, `email`, `contactnumber`, `schoolname`, `message`) VALUES ('$name',' $email','$contactNumber','$schoolName','$message') ") or die($mysqli->error);
+        $sql = ("INSERT INTO `contact_info`(`contact_name`, `contact_email`, `contact_num`, `contact_company`, `contact_project`, `Message`) VALUES ('$name',' $email','$phoneNumber','$companyName','$project','$message') ") or die($mysqli->error);
 
         if (mysqli_query($conn, $sql))
         {
-            $_SESSION['notif'] = "New record created successfully!";
-            $_SESSION['messageType'] = "success";
+            
         }
         else
         {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }        
+        }
         mysqli_close($conn);
-        header("Location:tables.php");
+        header('Location: contact-dashboard.php');
     }
 
 
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
 
-        $sql = "DELETE FROM `contact_info` WHERE id = $id" or die($mysqli->error);
+        $sql = "DELETE FROM `contact_info` WHERE contact_id = $id" or die($mysqli->error);
         
         if (mysqli_query($conn, $sql))
         {
@@ -49,37 +50,39 @@
         }
 
         mysqli_close($conn);
-        header("Location:tables.php");
+        header("Location:contact-dashboard.php");
     }
 
 
     if(isset($_GET['edit']))
     {
         $id = $_GET['edit'];
-        $sql = "SELECT * FROM `main` WHERE id = $id" or die($mysqli->error);
+        $sql = "SELECT * FROM `contact_info` WHERE contact_id = $id" or die($mysqli->error);
         $result = mysqli_query($conn, $sql);
         if($result)
         {
             $row = $result->fetch_array();
-            $nameTemp = $row['name'];
-            $emailTemp = $row['email'];
-            $contactNumberTemp = $row['contactnumber'];
-            $schoolNameTemp = $row['schoolname'];
-            $messageTemp = $row['message'];
+            $nameTemp = $row['contact_name'];
+            $emailTemp = $row['contact_email'];
+            $phoneNumberTemp = $row['contact_num'];
+            $companyNameTemp = $row['contact_company'];
+            $projectTemp = $row['contact_project'];
+            $messageTemp = $row['Message'];
         }
     }
 
 
     if(isset($_POST['update']))
     {
-        $id = $_POST['id'];
+        $id = $_POST['contact_id'];
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $contactNumber = $_POST['contactnumber'];
-        $schoolName = $_POST['schoolname'];
+        $phoneNumber = $_POST['phone'];
+        $companyName = $_POST['company'];
+        $project = $_POST['project'];
         $message = $_POST['message'];
 
-        $sql = ("UPDATE `main` SET `name`='$name',`email`='$email',`contactnumber`='$contactNumber',`schoolname`='$schoolName',`message`='$message' WHERE `id` = $id") or die($mysqli->error);
+        $sql = ("UPDATE `contact_info` SET `contact_name`='$name',`contact_email`='$email',`contact_num`='$phoneNumber',`contact_company`='$companyName',`contact_project`='$project',`Message`='$message' WHERE `contact_id` = $id") or die($mysqli->error);
 
         if (mysqli_query($conn, $sql))
         {
@@ -91,7 +94,7 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }        
         mysqli_close($conn);
-        header("Location:tables.php");
+        header("Location:contact-dashboard.php");
     }
 
 ?>

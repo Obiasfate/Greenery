@@ -1,3 +1,13 @@
+<?php
+
+    include_once 'includes/dbh.inc.php';
+    require_once 'functions.php';
+
+    if(!isset($_SESSION['admin_username'])){
+       header("Location:admin-login.php");
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +89,6 @@
                 </div>
                 <div class="card-body">
                     <?php
-                    include_once 'includes/dbh.inc.php';
                     $sql = "SELECT * FROM `contact_info`";
                     $result = $conn->query($sql);
                     ?>
@@ -109,8 +118,8 @@
                                     <td><?php echo $row['contact_project']; ?></td>
                                     <td><?php echo $row['Message']; ?></td>
                                     <td class="d-flex flex-row">
-                                        <a href="updatecontact.php?edit=<?php echo $row['contact_id']; ?>">
-                                            <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="update.php?edit=<?php echo $row['contact_id']; ?>">
+                                            <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="edit">
                                                 <span class="material-icons" aria-hidden="true">
                                                     edit
                                                 </span>
