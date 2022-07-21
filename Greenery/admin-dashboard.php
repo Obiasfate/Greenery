@@ -154,7 +154,6 @@ if (!isset($_SESSION['admin_username'])) {
                 <th scope="col">Product image</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Price</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -167,23 +166,6 @@ if (!isset($_SESSION['admin_username'])) {
                   <td><?php echo $row['product_name']; ?></td>
                   <td><?php echo $row['product_price']; ?></td>
 
-                  <td class="d-flex flex-row">
-                    <a href="functions.php?edit=<?php echo $row['product_id']; ?>">
-                      <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
-                        <span class="material-icons" aria-hidden="true">
-                          edit
-                        </span>
-                      </button>
-                    </a>
-
-                    <a href="product-dashboard.php?delete=<?php echo $row['product_id']; ?>">
-                      <button type="button" class="btn btn-danger me-3 ms-2" data-toggle=" tooltip" data-placement="top" title="Delete">
-                        <span class="material-icons" aria-hidden="true">
-                          delete
-                        </span>
-                      </button>
-                    </a>
-                  </td>
                 </tr>
               <?php
               }
