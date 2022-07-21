@@ -698,6 +698,39 @@ section {
   list-style: none;
   padding-bottom: 10px;
 }
+
+.services .services-container-btn {
+  position: relative;
+  /* bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.services .services-container-btn .services-btn .btn-get-started {
+font-family: "Raleway", sans-serif;
+font-weight: 600;
+font-size: 13px;
+letter-spacing: 1px;
+display: inline-block;
+padding: 8px 28px;
+border-radius: 50px;
+transition: 0.5s;
+margin: 10px;
+border: 2px solid #94c045;
+text-transform: uppercase;
+color: #94c045;
+}
+
+.services .services-container-btn .services-btn .btn-get-started:hover {
+background: #aacd6b;
+border-color: #aacd6b;
+color: #fff;
+}
 /*--------------------------------------------------------------
 # Bestsellers
 --------------------------------------------------------------*/
@@ -1984,6 +2017,3 @@ section {
 }
 
 
-.admin-login .admin-login-container .card-img-top{
-
-}
