@@ -25,6 +25,8 @@
         }
     };
 
+    // ------DELETE FUNCTION AT PRODUCT DASHBOARD-------------------------------
+
     if(isset($_GET['delete'])) {
         $id = $_GET['delete'];
         mysqli_query($conn, "DELETE FROM product_info WHERE product_id = $id");
