@@ -1,3 +1,13 @@
+<?php
+    // session_start();
+
+    // include_once 'includes/dbh.inc.php';
+    // require_once 'functions.php';
+
+    // if(!isset($_SESSION['username'])){
+    //    header("Location:admin-dashboard.php");
+    // }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +77,8 @@
         </div>
         <div class="card-body">
           <?php
-          $sql = "SELECT * FROM `main`";
+          include_once 'includes/dbh.inc.php';
+          $sql = "SELECT * FROM `contact_info`";
           $result = $conn->query($sql);
           ?>
           <table id="datatablesSimple">
@@ -76,7 +87,8 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact Number</th>
-                <th>School Name</th>
+                <th>Company Name</th>
+                <th>Project</th>
                 <th>Message</th>
               </tr>
             </thead>
@@ -85,11 +97,12 @@
               while ($row = $result->fetch_assoc()) {
               ?>
                 <tr>
-                  <td><?php echo $row['name']; ?></td>
-                  <td><?php echo $row['email']; ?></td>
-                  <td><?php echo $row['contactnumber']; ?></td>
-                  <td><?php echo $row['schoolname']; ?></td>
-                  <td><?php echo $row['message']; ?></td>
+                  <td><?php echo $row['contact_name']; ?></td>
+                  <td><?php echo $row['contact_email']; ?></td>
+                  <td><?php echo $row['contact_num']; ?></td>
+                  <td><?php echo $row['contact_company']; ?></td>
+                  <td><?php echo $row['contact_project']; ?></td>
+                  <td><?php echo $row['Message']; ?></td>
                 </tr>
               <?php
               }
@@ -120,3 +133,4 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 </body>
+
