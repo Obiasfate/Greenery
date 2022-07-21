@@ -2,7 +2,9 @@
 
 include 'includes/dbh.inc.php';
 
-if (isset($_POST['add_product'])) {
+$id = $_GET['edit'];
+
+if (isset($_POST['update_product'])) {
 
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
@@ -13,26 +15,19 @@ if (isset($_POST['add_product'])) {
     if (empty($product_name) || empty($product_price) || empty($product_image)) {
         $message[] = 'Please Fill Out All Field';
     } else {
-        $insert = "INSERT INTO `product_info`(`product_name`, `product_price`, `product_image`) VALUES('$product_name', '$product_price', '$product_image')";
-        $upload = mysqli_query($conn, $insert);
+        $update = "UPDATE `product_info`SET product_name='$product_name', product_price='$product_price',product_image='$product_image'
+        WHERE product_id = $id";
+        $upload = mysqli_query($conn, $update);
         if ($upload) {
             move_uploaded_file($product_image_tmp_name, $product_image_folder);
-            $message[] = 'New Product Added Successfully!';
         } else {
             $message[] = 'Could not Add the Product :(';
         }
     }
 };
 
-// ------DELETE FUNCTION AT PRODUCT DASHBOARD-------------------------------
-
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    mysqli_query($conn, "DELETE FROM product_info WHERE product_id = $id");
-    header('location:product-dashboard.php');
-}
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -42,7 +37,7 @@ if (isset($_GET['delete'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Admin-Dashboard</title>
+    <title>Product Update</title>
 
     <!-- Favicons -->
     <link href="assets/img/greenery_logo.png" rel="icon">
@@ -107,9 +102,9 @@ if (isset($_GET['delete'])) {
     <main>
         <div class="container-fluid px-4 py-2">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Products</li>
+                <li class="breadcrumb-item active">Products / Update Products</li>
             </ol>
-            <h1 class="mt-4 py-3">Products</h1>
+            <h1 class="mt-4 py-3">Update Products</h1>
 
             <!-- PRODUCT-CRUD -->
 
@@ -125,90 +120,37 @@ if (isset($_GET['delete'])) {
 
             <div class="container">
 
-                <div class="product-form-container">
+                <div class="product-form-container centered">
+
+                    <?php
+                    
+                    $sql = mysqli_query($conn, "SELECT * FROM product_info WHERE product_id = $id");
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                
+
+                    ?>
 
                     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
-                        <h3>ADD NEW PRODUCT</h3>
-                        <input type="text" placeholder="Enter product name..." name="product_name" class="box">
-                        <input type="number" placeholder="Enter product price..." name="product_price" class="box">
+                        <h3>UPDATE THE PRODUCT</h3>
+                        <input type="text" placeholder="Enter product name..." value="<?php echo $row['product_name']; ?>" name="product_name" class="box">
+
+                        <input type="number" placeholder="Enter product price..." value="<?php echo $row['product_price']; ?>" name="product_price" class="box">
+
                         <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
-                        <input type="submit" class="btn-add-product" name="add_product" value="Add a Product">
+
+                        <input type="submit" class="btn-add-product" name="update_product" value="Update Product">
+
+                        <a href="product-dashboard.php" class="btn-add-product">Go Back</a>
                     </form>
 
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT DATABASE TABLE -->
-
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Product Database
-                </div>
-
-
-                <div class="card-body">
-                    <?php
-                    include_once 'includes/dbh.inc.php';
-                    $sql = "SELECT * FROM `product_info`";
-                    $result = $conn->query($sql);
-                    ?>
-                    <table class="table" id="datatablesSimple">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Product image</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Product Price</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <?php
-                            while ($row = $result->fetch_assoc()) {
-                            ?>
-                                <tr>
-                                    <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
-
-                                    <td><?php echo $row['product_name']; ?></td>
-                                    <td><?php echo $row['product_price']; ?></td><br>
-
-                                    <td class="d-flex flex-row">
-                                        <a href="product-update.php?edit=<?php echo $row['product_id']; ?>">
-                                            <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <span class="material-icons" aria-hidden="true">
-                                                    edit
-                                                </span>
-                                            </button>
-                                        </a>
-                                    
-
-                                    
-                                        <a href="product-dashboard.php?delete=<?php echo $row['product_id']; ?>">
-                                            <button type="button" class="btn btn-danger me-3 ms-2" data-toggle=" tooltip" data-placement="top" title="Delete">
-                                                <span class="material-icons" aria-hidden="true">
-                                                    delete
-                                                </span>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                    <?php } ?>
 
                 </div>
+
             </div>
         </div>
+       
     </main>
-
-
-
-
-
 
 
     <!-- Vendor JS Files -->
@@ -223,4 +165,5 @@ if (isset($_GET['delete'])) {
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+        
 </body>
