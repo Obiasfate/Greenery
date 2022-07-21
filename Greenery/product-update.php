@@ -4,7 +4,12 @@ include 'includes/dbh.inc.php';
 
 $id = $_GET['edit'];
 
+
 if (isset($_POST['update_product'])) {
+
+    if (!isset($_SESSION['admin_username'])) {
+        header("Location:product-dashboard.php");
+    }
 
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
@@ -139,6 +144,7 @@ if (isset($_POST['update_product'])) {
                         <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
 
                         <input type="submit" class="btn-add-product" name="update_product" value="Update Product">
+
 
                         <a href="product-dashboard.php" class="btn-add-product">Go Back</a>
                     </form>
