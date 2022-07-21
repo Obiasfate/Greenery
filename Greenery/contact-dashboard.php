@@ -61,7 +61,7 @@
                             <a class="nav-link" href="admin-dashboard.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="product-dashboard.php">Product</a>
+                            <a class="nav-link" href="product-dashboard.php">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="contact-dashboard.php">Contact</a>
