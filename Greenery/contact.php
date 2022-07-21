@@ -14,7 +14,8 @@
 
         if (mysqli_query($conn, $sql))
         {
-            
+          $_SESSION['notif'] = "Inquiry sent successfully!";
+          $_SESSION['messageType'] = "info";
         }
         else
         {

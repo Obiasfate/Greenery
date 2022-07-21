@@ -1,37 +1,36 @@
 <?php
 
-    include 'includes/dbh.inc.php';
+include 'includes/dbh.inc.php';
 
-    if (isset($_POST['add_product'])) {
+if (isset($_POST['add_product'])) {
 
-        $product_name = $_POST['product_name'];
-        $product_price = $_POST['product_price'];
-        $product_image = $_FILES['product_image']['name'];
-        $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-        $product_image_folder = 'assets/img/plants/' .$product_image;
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_FILES['product_image']['name'];
+    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
+    $product_image_folder = 'assets/img/plants/' . $product_image;
 
-        if (empty($product_name) || empty($product_price) || empty($product_image)) {
-            $message[] = 'Please Fill Out All Field';
+    if (empty($product_name) || empty($product_price) || empty($product_image)) {
+        $message[] = 'Please Fill Out All Field';
+    } else {
+        $insert = "INSERT INTO `product_info`(`product_name`, `product_price`, `product_image`) VALUES('$product_name', '$product_price', '$product_image')";
+        $upload = mysqli_query($conn, $insert);
+        if ($upload) {
+            move_uploaded_file($product_image_tmp_name, $product_image_folder);
+            $message[] = 'New Product Added Successfully!';
         } else {
-            $insert = "INSERT INTO `product_info`(`product_name`, `product_price`, `product_image`) VALUES('$product_name', '$product_price', '$product_image')";
-            $upload = mysqli_query($conn, $insert);
-            if ($upload) {
-                move_uploaded_file($product_image_tmp_name, $product_image_folder);
-                $message[] = 'New Product Added Successfully!';
-            } 
-            else {
-                $message[] = 'Could not Add the Product :(';
-            }
+            $message[] = 'Could not Add the Product :(';
         }
-    };
-
-    // ------DELETE FUNCTION AT PRODUCT DASHBOARD-------------------------------
-
-    if(isset($_GET['delete'])) {
-        $id = $_GET['delete'];
-        mysqli_query($conn, "DELETE FROM product_info WHERE product_id = $id");
-        header('location:product-dashboard.php');
     }
+};
+
+// ------DELETE FUNCTION AT PRODUCT DASHBOARD-------------------------------
+
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    mysqli_query($conn, "DELETE FROM product_info WHERE product_id = $id");
+    header('location:product-dashboard.php');
+}
 
 ?>
 
@@ -65,6 +64,15 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/product-dashboard.css" rel="stylesheet">
 
+    <!-- Additional Design for Tables -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script>
+        $(document).ready(function() {
+            $('#datatablesSimple').DataTable();
+        });
+    </script>
 
 </head>
 
@@ -131,7 +139,7 @@
             </div>
 
 
-<!-- PRODUCT DATABASE TABLE -->
+            <!-- PRODUCT DATABASE TABLE -->
 
             <div class="card mb-4">
                 <div class="card-header">
@@ -148,12 +156,12 @@
                     ?>
                     <table class="table" id="datatablesSimple">
                         <thead class="table-dark">
-                        <tr>
-                            <th scope="col">Product image</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Price</th>
-                            <th scope="col">Action</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">Product image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
                         </thead>
                         <tbody class="table-group-divider">
                             <?php
@@ -188,7 +196,7 @@
                             ?>
                         </tbody>
                     </table>
-          
+
                 </div>
             </div>
         </div>

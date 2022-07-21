@@ -1,12 +1,12 @@
 <?php
-    session_start();
+session_start();
 
-    include_once 'includes/dbh.inc.php';
-    // require_once 'functions.php';
+include_once 'includes/dbh.inc.php';
+// require_once 'functions.php';
 
-    if(!isset($_SESSION['admin_username'])){
-      header("Location:admin-login.php");
-    }
+if (!isset($_SESSION['admin_username'])) {
+  header("Location:admin-login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,14 +41,20 @@
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <script>
-    $(document).ready(function () {
-    $('#datatablesSimple').DataTable();
+    $(document).ready(function() {
+      $('#datatablesSimple').DataTable();
     });
   </script>
 
+  <script>
+    $(document).ready(function() {
+      $('#datatablesSimple2').DataTable();
+    });
+  </script>
 </head>
+
 <body>
-<header class="d-flex flex-wrap justify-content-center py-4 mb-4 border-bottom">
+  <header class="d-flex flex-wrap justify-content-center py-4 mb-4 border-bottom">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="admin-dashboard.php"><img src="assets/img/greenery_logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">Greenery</a>
@@ -75,7 +81,7 @@
     </nav>
   </header>
   <main>
-    
+
     <div class="container-fluid px-4 py-2">
       <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
@@ -87,7 +93,7 @@
           <i class="fas fa-table me-1"></i>
           Contact Database
         </div>
-        
+
         <div class="card-body">
           <?php
           include_once 'includes/dbh.inc.php';
@@ -101,7 +107,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Contact Number</th>
-                <th scope="col" >Company Name</th>
+                <th scope="col">Company Name</th>
                 <th scope="col">Project</th>
                 <th scope="col">Message</th>
               </tr>
@@ -124,9 +130,68 @@
               ?>
             </tbody>
           </table>
-          
+
         </div>
-        
+
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Product Database
+        </div>
+
+
+        <div class="card-body">
+          <?php
+          include_once 'includes/dbh.inc.php';
+          $sql = "SELECT * FROM `product_info`";
+          $result = $conn->query($sql);
+          ?>
+          <table class="table" id="datatablesSimple2">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Product image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <?php
+              while ($row = $result->fetch_assoc()) {
+              ?>
+                <tr>
+                  <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
+
+                  <td><?php echo $row['product_name']; ?></td>
+                  <td><?php echo $row['product_price']; ?></td>
+
+                  <td class="d-flex flex-row">
+                    <a href="functions.php?edit=<?php echo $row['product_id']; ?>">
+                      <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <span class="material-icons" aria-hidden="true">
+                          edit
+                        </span>
+                      </button>
+                    </a>
+
+                    <a href="product-dashboard.php?delete=<?php echo $row['product_id']; ?>">
+                      <button type="button" class="btn btn-danger me-3 ms-2" data-toggle=" tooltip" data-placement="top" title="Delete">
+                        <span class="material-icons" aria-hidden="true">
+                          delete
+                        </span>
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              <?php
+              }
+              ?>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </main>
@@ -137,17 +202,16 @@
 
 
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 </body>
-
