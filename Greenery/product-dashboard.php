@@ -76,6 +76,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="product-dashboard.php">Products</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact-dashboard-copy.php">Contact</a>
+                        </li>
                     </ul>
                     <li class="nav-item d-flex pe-3">
                         <a class="nav-link" href="#">Logout</a>
