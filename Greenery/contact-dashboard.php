@@ -51,10 +51,10 @@
                             <a class="nav-link" href="admin-dashboard.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="product-dashboard.php">Products</a>
+                            <a class="nav-link" href="product-dashboard.php">Product</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="contact-dashboard-copy.php">Contact</a>
+                            <a class="nav-link active" aria-current="page" href="contact-dashboard.php">Contact</a>
                         </li>
                     </ul>
                     <li class="nav-item d-flex pe-3">
