@@ -41,7 +41,7 @@
 
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="admin-dashboard.php" class="nav-link active" aria-current="page">Admin</a></li>
-        <li class="nav-item"><a href="contact-dasboard.php" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="contact-dashboard.php" class="nav-link">Contact</a></li>
       </ul>
     </header>
      </div>
