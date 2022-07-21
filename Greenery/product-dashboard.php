@@ -23,6 +23,12 @@
                 $message[] = 'Could not Add the Product :(';
             }
         }
+    };
+
+    if(isset($_GET['delete'])) {
+        $id = $_GET['delete'];
+        mysqli_query($conn, "DELETE FROM product_info WHERE product_id = $id");
+        header('location:product-dashboard.php');
     }
 
 ?>
@@ -153,17 +159,20 @@
                             ?>
                                 <tr>
                                     <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
+
                                     <td><?php echo $row['product_name']; ?></td>
                                     <td><?php echo $row['product_price']; ?></td>
+
                                     <td class="d-flex flex-row">
-                                        <a href="updatecontact.php?edit=<?php echo $row['product_id']; ?>">
+                                        <a href="functions.php?edit=<?php echo $row['product_id']; ?>">
                                             <button type="button" class="btn btn-primary ms-3 me-2" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <span class="material-icons" aria-hidden="true">
                                                     edit
                                                 </span>
                                             </button>
                                         </a>
-                                        <a href="functions.php?delete=<?php echo $row['product_id']; ?>">
+
+                                        <a href="product-dashboard.php?delete=<?php echo $row['product_id']; ?>">
                                             <button type="button" class="btn btn-danger me-3 ms-2" data-toggle=" tooltip" data-placement="top" title="Delete">
                                                 <span class="material-icons" aria-hidden="true">
                                                     delete
