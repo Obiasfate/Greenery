@@ -36,7 +36,7 @@
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
 
-        $sql = "DELETE FROM `main` WHERE id = $id" or die($mysqli->error);
+        $sql = "DELETE FROM `contact_info` WHERE id = $id" or die($mysqli->error);
         
         if (mysqli_query($conn, $sql))
         {
