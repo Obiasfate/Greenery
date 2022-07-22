@@ -172,7 +172,7 @@ if (isset($_GET['delete'])) {
                                     <td><img src="assets/img/plants/<?php echo $row['product_image']; ?>" height="100"></td>
 
                                     <td><?php echo $row['product_name']; ?></td>
-                                    <td><?php echo $row['product_price']; ?></td><br>
+                                    <td><?php echo $row['product_price']; ?></td>
 
                                     <td class="d-flex flex-row">
                                         <a href="product-update.php?edit=<?php echo $row['product_id']; ?>">
