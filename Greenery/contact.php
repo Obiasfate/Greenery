@@ -58,12 +58,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Serenity - v4.7.0
-  * Template URL: https://bootstrapmade.com/serenity-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -73,8 +67,6 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <!-- <h1 class="text-light"><a href="index.html">Serenity</a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
         <a href="index.html"><img src="assets/img/greenery_logo.png" alt="logo" class="img-fluid">Greenery</a>
       </div>
 
@@ -83,23 +75,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="plants-and-seeds.html">Plants and Seeds</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Plants and Non-Plants</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="portfolio.html">Indoor Plants</a></li>
-              <li><a href="portfolio.html">Outdoor Plants</a></li>
-              <li class="dropdown"><a href="#"><span>Plant Seeds</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li> -->
           <li><a href="services.html">Services</a></li>
-          <!-- <li><a href="pricing.html">Pricing</a></li> -->
           <li><a href="blog.html">Blog</a></li>
           <li><a class="active" href="contact.php">Contact</a></li>
           <li><a href="#"><span class="material-icons">
@@ -266,11 +242,6 @@
         &copy; Copyright <strong><span>Greenery</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/serenity-bootstrap-corporate-template/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -285,7 +256,6 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
