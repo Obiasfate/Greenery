@@ -7,9 +7,6 @@ $id = $_GET['edit'];
 
 if (isset($_POST['update_product'])) {
 
-    if (!isset($_SESSION['admin_username'])) {
-        header("Location:product-dashboard.php");
-    }
 
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
@@ -28,6 +25,8 @@ if (isset($_POST['update_product'])) {
         } else {
             $message[] = 'Could not Add the Product :(';
         }
+        mysqli_close($conn);
+        header('Location: product-dashboard.php');
     }
 };
 
