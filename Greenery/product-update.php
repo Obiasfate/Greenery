@@ -96,7 +96,7 @@ if (isset($_POST['update_product'])) {
                         </li>
                     </ul>
                     <li class="nav-item d-flex pe-3">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                 </div>
             </div>
