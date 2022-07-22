@@ -101,7 +101,7 @@
           <li><a href="services.html">Services</a></li>
           <!-- <li><a href="pricing.html">Pricing</a></li> -->
           <li><a href="blog.html">Blog</a></li>
-          <li><a class="active" href="contact.html">Contact</a></li>
+          <li><a class="active" href="contact.php">Contact</a></li>
           <li><a href="#"><span class="material-icons">
             shopping_cart
             </span></a></li>
